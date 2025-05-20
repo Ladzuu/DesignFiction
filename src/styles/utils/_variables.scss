@@ -1,0 +1,38 @@
+:root {
+    /* Colors */
+    --backgrond-color: #F4F2EE;
+    --primary-color: #1E1E1E;
+    --secondary-color: #E54C4C;
+
+    /* Fonts */
+    --h1: 'Pirata One', serif;
+    --title-section: 'Playfair Display', serif;
+    --text: 'Poppins', sans-serif;
+
+    /* Font Sizes */
+    // Mobile
+    --h1-size-mb: 5.625rem;
+    --h1-tech-size-mb: 4.188rem;
+    --h2-size-mb: 2.375rem;
+    --h3-size-mb: 1.75rem;
+    --text-big-mb: 1.313rem;
+    --text-mb: 1rem;
+    --text-small-mb: 0.75rem;
+
+    // Desktop
+    --h1-size-dt: 8.438rem;
+    --h1-tech-size-dt: 6.313rem;
+    --h2-size-dt: 2.688rem;
+    --h3-size-dt: 2rem;
+    --text-big-dt: 1.5rem;
+    --text-dt: 1.125rem;
+    --text-small-dt: 0.875rem;
+
+    /* Font Weights */
+    --bold-weight: 700;
+    --regular-weight: 400;
+
+    /* Font Line Heights */
+    --title--line-height: 1.2;
+    --text-line-height: 1.4;
+}
