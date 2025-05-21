@@ -174,3 +174,117 @@ body {
     top: 0;
     height: 100%;
 }
+
+/* HEADER */
+
+.section--header {
+    height: 100vh;
+    padding: 0 20px;
+
+    .section--header__content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+        height: 100%;
+
+        .title--big {
+            margin: 0;
+            padding-bottom: 32px;
+            font-size: var(--h1-size-mb);
+            line-height: var(--title--line-height);
+            font-family: var(--h1);
+
+            .compass--h1 {
+                width: 40px;
+                height: 40px;
+            }
+        }
+
+        .text--big {
+            margin: 0;
+            font-size: var(--text-big-mb);
+            font-weight: var(--regular-weight);
+            line-height: var(--text-line-height);
+            font-family: var(--text);
+            max-width: 400px;
+        }
+
+        .btn--start {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 40px;
+            padding: 16px 20px;
+            background-color: var(--secondary-color);
+            color: var(--background-color);
+            line-height: var(--text-line-height);
+            font-size: var(--text-mb);
+            font-family: var(--text);
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            cursor: none;
+            box-shadow: 0 0px 10px rgba(0, 0, 0, 0.3);
+
+            .compass--btn {
+                width: 20px;
+                height: 20px;
+                margin-left: 10px;
+                transition: all 0.3s ease;
+                transform: rotate(0deg);
+                fill: var(--secondary-color);
+            }
+
+            &:hover {
+                background-color: var(--background-color);
+                color: var(--secondary-color);
+                transform: scale(1.05);
+
+                .compass--btn {
+                    transform: rotate(180deg);
+                    color: var(--secondary-color);
+                }
+            }    
+        }
+    }
+
+    .japanese--content {
+        position: absolute;
+        writing-mode: vertical-rl;
+        margin: 0;
+        top : 100px;
+        left: 20px;
+        padding: 10px 5px 2px 5px;
+        border: 1px solid var(--primary-color);
+
+        .text {
+            margin: 0;
+            letter-spacing: 10px;
+            font-size: var(--text-mb);
+            font-family: var(--title-section);
+        }
+    }
+
+    .text--chapter {
+        position: absolute;
+        bottom: 40px;
+        right: 20px;
+        margin: 0;
+        font-family: var(--title-section);
+        font-size: var(--text-big-mb);
+
+        .text--number {
+            color: var(--secondary-color);
+            font-weight: var(--bold-weight);
+        }
+    }
+}
+
+/* MAIN */
+
+img {
+    width: 200px;
+    height: auto;
+}
