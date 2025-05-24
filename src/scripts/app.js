@@ -10,8 +10,8 @@ gsap.registerPlugin(ScrollTrigger);
 const cursor = document.querySelector('.custom--cursor');      // Cursor
 const outline = document.querySelector('.cursor--outline');    // Border Follow
 
-let mouseX = 0, mouseY = 0;             // Coord Cursor
-let outlineX = 0, outlineY = 0;         // Coord Border
+let mouseX = 0, mouseY = 0;       // Coord Cursor
+let outlineX = 0, outlineY = 0;   // Coord Border
 
 document.addEventListener('mousemove', (e) => {
   mouseX = e.clientX;
@@ -91,88 +91,137 @@ menuButton.addEventListener("click", function () {
 
 // ------- HOME PAGE -------
 
-// Compass Header Animation
+// Anim Content Header
+const headerTitle = document.querySelector('.section--header__content .title--big');
 
-
-// Chapter Animation
-
-window.addEventListener('DOMContentLoaded', function () {
-
-  const fixedChapter = document.querySelector('.fixed--chapter');
-  const jpBlock = fixedChapter.querySelector('.japanese--content');
-  const jpText = jpBlock.querySelector('.text');
-  const frBlock = fixedChapter.querySelector('.text--chapter');
-
-  function animateText(newJP, newFR) {
-    // Sortie animée puis mise à jour + entrée
-    gsap.to(jpBlock, {
-      x: -80,
-      opacity: 0,
-      duration: 0.3,
-      onComplete: () => {
-        jpText.textContent = newJP;
-        gsap.fromTo(jpBlock, 
-            { 
-                x: -80,
-                opacity: 0
-            },
-            { 
-                x: 0,
-                opacity: 1,
-                duration: 0.5
-            });
-      }
-    });
-
-    gsap.to(frBlock, {
-      x: 80,
-      opacity: 0,
-      duration: 0.3,
-      onComplete: () => {
-        frBlock.textContent = newFR;
-        gsap.fromTo(frBlock, 
-            { 
-                x: 80,
-                opacity: 0
-            }, 
-            { 
-                x: 0,
-                opacity: 1,
-                duration: 0.5
-            });
-      }
-    });
-  }
-
-  // ScrollTrigger sur chaque h2
-  const headings = document.querySelectorAll('.section--chapter .title--section');
-  headings.forEach(h2 => {
-    const section = h2.closest('.section--chapter');
-    const jp = section.querySelector('.japanese--content .text')?.textContent;
-    const fr = section.querySelector('.text--chapter')?.textContent;
-
-    if (jp && fr) {
-      ScrollTrigger.create({
-        trigger: h2,
-        start: "top center",
-        onEnter: () => animateText(jp, fr),
-        onEnterBack: () => animateText(jp, fr)
-      });
+gsap.fromTo(headerTitle,
+  {
+    y: -80,
+    opacity: 0,
+  },
+  {
+    y: 0,
+    opacity: 1,
+    duration: 0.5,
+    ease: "power2.out",
+    onComplete: () => {
+      const subtitles = document.querySelectorAll('.section--header__content .text--big');
+      gsap.fromTo(subtitles, 
+        {
+          y: 20,
+          opacity: 0,
+        },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.5,
+          ease: "power2.out",
+        }
+      );
     }
-  });
-
-  // ScrollTrigger pour le header
-  const header = document.querySelector('#chapter0');
-  const headerJP = header.querySelector('.japanese--content .text')?.textContent;
-  const headerFR = header.querySelector('.text--chapter')?.textContent;
-
-  if (headerJP && headerFR) {
-    ScrollTrigger.create({
-      trigger: '.trigger--header',
-      start: "top center",
-      onEnter: () => animateText(headerJP, headerFR),
-      onEnterBack: () => animateText(headerJP, headerFR)
-    });
   }
+);
+
+// --- Anim Compass Header ---
+
+const compass = document.querySelector('.compass--h1');
+
+gsap.fromTo (compass, 
+  {
+    rotate: -20,
+  },
+  {
+    rotate: 20,
+    duration: 1,
+    repeat: -1,
+    yoyo: true,
+    ease: "power1.inOut",
+  }
+);
+
+// --- Anim Chapters Tablet/Desktop ---
+
+const fixedJapanese = document.getElementById('fixed-japanese'); // Fixed Japanese Content
+const fixedChapter = document.getElementById('fixed-chapter'); // Fixed Chapter Content
+const sections = Array.from(document.querySelectorAll('.section--chapter')); // All sections with chapters
+
+// Get all sections with chapters and their content
+const chaptersData = sections.map(section => {
+    const jap = section.querySelector('.japanese--content')?.innerHTML || ''; 
+    const chap = section.querySelector('.text--chapter')?.innerHTML || '';
+    return { jap, chap, section };
 });
+
+// Currently visible section
+function getCurrentSection() {
+    const scrollY = window.scrollY || window.pageYOffset;
+    // Previous section scroll
+    let current = chaptersData[0];
+    for (const data of chaptersData) {
+        const rect = data.section.getBoundingClientRect();
+        const top = rect.top + window.scrollY;
+        if (scrollY + 120 >= top) current = data;
+    }
+    return current;
+}
+
+let lastJap = '';
+let lastChap = '';
+
+function updateFixedContent() {
+    if (window.innerWidth >= 768) {
+        const { jap, chap } = getCurrentSection();
+
+        // If content changes, anim transition
+        if (jap !== lastJap || chap !== lastChap) {
+            // Anim out
+            gsap.to(fixedJapanese, {
+              x: -100,
+              opacity: 0,
+              duration: 0.3,
+              ease: "power2.in"
+            });
+            gsap.to(fixedChapter, {
+              x: 100, opacity:
+              0, duration: 0.3,
+              ease: "power2.in",
+              onComplete: () => {
+                // Update content
+                fixedJapanese.innerHTML = jap;
+                fixedChapter.innerHTML = chap;
+
+                // Out of screnn to entry
+                gsap.set(fixedJapanese, { x: -100 });
+                gsap.set(fixedChapter, { x: 100 });
+
+                // Anim entry
+                gsap.to(fixedJapanese, {
+                  x: 0,
+                  opacity: 1,
+                  duration: 0.4,
+                  ease: "power2.out"
+                });
+                gsap.to(fixedChapter, {
+                  x: 0,
+                  opacity: 1,
+                  duration: 0.4,
+                  ease: "power2.out"
+                });
+            }});
+            lastJap = jap;
+            lastChap = chap;
+        }
+    } else {
+        fixedJapanese.innerHTML = '';
+        fixedChapter.innerHTML = '';
+        lastJap = '';
+        lastChap = '';
+    }
+}
+
+// Update content on scroll and resize
+window.addEventListener('scroll', updateFixedContent);
+window.addEventListener('resize', updateFixedContent);
+// Initialize when loading page
+updateFixedContent();
 
