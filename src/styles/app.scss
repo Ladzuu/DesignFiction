@@ -40,6 +40,31 @@ body {
     transition: transform 0.1s ease;
 }
 
+// Anchors
+
+
+
+#chapter1,
+#chapter2,
+#chapter3,
+#chapter4,
+#chapter5,
+#chapter6 {
+    scroll-margin-top: 100px;
+}
+
+#frame1,
+#frame2,
+#frame3,
+#frame4,
+#frame5,
+#frame6,
+#frame7,
+#frame8,
+#frame9 {
+    scroll-margin-top: -85px;
+}
+
 // Fixed chapter
 
 .japanese--content.fixed,
@@ -750,6 +775,10 @@ body {
                 justify-content: center;
                 align-items: center;
                 height: 100vh;
+
+                .section--chapter__content {
+                    margin-bottom: 40px;
+                }
             }
 
             .section--chapter__content {

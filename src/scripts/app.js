@@ -52,12 +52,12 @@ menuButton.addEventListener("click", function () {
     if (menu.classList.contains("open")) {
         gsap.to(menuLinks, {
             opacity: 0,
-            duration: 0.1,
-            stagger: { each: 0.1, from: "end" },
+            duration: 0.2,
+            stagger: { each: 0.2, from: "end" },
             onComplete: function () {
                 gsap.to(menu, {
                     y: "-100%",
-                    duration: 0.1,
+                    duration: 0.2,
                     ease: "power3.out",
                 });
                 menu.classList.remove("open");
@@ -69,14 +69,14 @@ menuButton.addEventListener("click", function () {
             { y: "-100%" },
             {
                 y: "0%",
-                duration: 0.2,
+                duration: 0.5,
                 ease: "power4.out",
                 onComplete: function () {
                     gsap.to(
                         menuLinks,
                         {
                             opacity: 1,
-                            duration: 0.2,
+                            duration: 0.4,
                             stagger: 0.2,
                             ease: "power2.out",
                         }
@@ -86,6 +86,26 @@ menuButton.addEventListener("click", function () {
         );
 
         menu.classList.add("open");
+
+        // Close menu when clicking on a link
+        menuLinks.forEach(link => {
+            link.addEventListener("click", () => {
+                gsap.to(menuLinks, {
+                    opacity: 0,
+                    duration: 0.1,
+                    stagger: { each: 0.1, from: "end" },
+                    onComplete: function () {
+                        gsap.to(menu, {
+                            y: "-100%",
+                            duration: 0.2,
+                            ease: "power3.out",
+                        });
+                        menu.classList.remove("open");
+                        menuButton.classList.remove("open");
+                    },
+                });
+            });
+        });
     }
 });
 
@@ -105,7 +125,7 @@ gsap.fromTo(headerTitle,
     duration: 0.5,
     ease: "power2.out",
     onComplete: () => {
-      const subtitles = document.querySelectorAll('.section--header__content .text--big');
+      const subtitles = document.querySelector('.section--header__content .text--big');
       gsap.fromTo(subtitles, 
         {
           y: 20,
@@ -140,7 +160,6 @@ gsap.fromTo (compass,
 );
 
 // --- Anim Chapters Tablet/Desktop ---
-
 const fixedJapanese = document.getElementById('fixed-japanese'); // Fixed Japanese Content
 const fixedChapter = document.getElementById('fixed-chapter'); // Fixed Chapter Content
 const sections = Array.from(document.querySelectorAll('.section--chapter')); // All sections with chapters
@@ -224,4 +243,27 @@ window.addEventListener('scroll', updateFixedContent);
 window.addEventListener('resize', updateFixedContent);
 // Initialize when loading page
 updateFixedContent();
+
+// --- Anim Chapter Content ---
+
+const animatedElements = gsap.utils.toArray([
+  '.section--chapter__frame',
+  '.section--chapter__content',
+  'figure'
+]);
+
+animatedElements.forEach((el) => {
+  gsap.from(el, {
+    opacity: 0,
+    y: -60,
+    duration: 1,
+    ease: 'power2.out',
+    scrollTrigger: {
+      trigger: el,
+      start: 'top 80%',
+      end: '80% top',
+      toggleActions: 'play reverse play reverse',
+    }
+  });
+});
 
