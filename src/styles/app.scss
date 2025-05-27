@@ -56,13 +56,16 @@ body {
 #frame1,
 #frame2,
 #frame3,
-#frame4,
 #frame5,
 #frame6,
 #frame7,
 #frame8,
 #frame9 {
-    scroll-margin-top: -85px;
+    scroll-margin-top: -80px;
+}
+
+#frame4 {
+    scroll-margin-top: -60px;
 }
 
 // Fixed chapter
@@ -368,6 +371,11 @@ body {
                 font-weight: var(--bold-weight);
                 font-size: var(--text-number-mb);
             }
+        }
+
+        .text--quote {
+            color: var(--secondary-color);
+            font-style: italic;
         }
 
         .section--chapter__frame {
@@ -908,11 +916,11 @@ body {
                 }
 
                 .figure--large {
-                    max-width: 500px;
+                    max-width: 400px;
 
                     .figure__image {
-                        height: 300px;
-                        width: 500px;
+                        height: 250px;
+                        width: 400px;
                     }
 
                     .figure__text {
@@ -923,8 +931,8 @@ body {
                 .figure--square {
 
                     .figure__image {
-                        height: 300px;
-                        width: 300px;
+                        height: 250px;
+                        width: 250px;
                     }
 
                     .figure__text {
@@ -946,8 +954,8 @@ body {
 
             .figure--card {
                 .figure__image {
-                    height: 400px;
-                    width: 300px;
+                    height: 300px;
+                    width: 250px;
                 }
 
                 .figure__text {
@@ -993,4 +1001,39 @@ body {
     }
 }
 
+@media (min-width: 1600px) {
+
+    .main {
+
+        .section--chapter {
+            .section--chapter__frame {
+                .figure--large {
+                    max-width: 500px;
+
+                    .figure__image {
+                        height: 300px;
+                        width: 500px;
+                    }
+                }
+
+                .figure--square {
+
+                    .figure__image {
+                        height: 300px;
+                        width: 300px;
+                    }
+                }
+            }
+
+            .figure--card {
+                .figure__image {
+                    height: 400px;
+                    width: 300px;
+                }
+            }
+        }
+    }
+}
+
 /* ------- TECH PAGE ------- */
+

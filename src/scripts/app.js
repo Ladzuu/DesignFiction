@@ -52,12 +52,12 @@ menuButton.addEventListener("click", function () {
     if (menu.classList.contains("open")) {
         gsap.to(menuLinks, {
             opacity: 0,
-            duration: 0.2,
-            stagger: { each: 0.2, from: "end" },
+            duration: 0.1,
+            stagger: { each: 0.1, from: "end" },
             onComplete: function () {
                 gsap.to(menu, {
                     y: "-100%",
-                    duration: 0.2,
+                    duration: 0.1,
                     ease: "power3.out",
                 });
                 menu.classList.remove("open");
@@ -76,7 +76,7 @@ menuButton.addEventListener("click", function () {
                         menuLinks,
                         {
                             opacity: 1,
-                            duration: 0.4,
+                            duration: 0.2,
                             stagger: 0.2,
                             ease: "power2.out",
                         }
@@ -97,7 +97,7 @@ menuButton.addEventListener("click", function () {
                     onComplete: function () {
                         gsap.to(menu, {
                             y: "-100%",
-                            duration: 0.2,
+                            duration: 0.1,
                             ease: "power3.out",
                         });
                         menu.classList.remove("open");
@@ -256,7 +256,8 @@ animatedElements.forEach((el) => {
   gsap.from(el, {
     opacity: 0,
     y: -60,
-    duration: 1,
+    duration: 1.2,
+    stagger: 0.2,
     ease: 'power2.out',
     scrollTrigger: {
       trigger: el,
