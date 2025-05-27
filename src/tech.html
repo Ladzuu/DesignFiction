@@ -15,9 +15,26 @@
     <script src="scripts/app.js" defer></script>
   </head>
   <body>
+    <!-- Audio -->
+    <audio class="musicBackground" loop>
+      <source src="assets/audio/musicTech.mp3" type="audio/mpeg">
+    </audio>
+    <button class="musicBtn" aria-label="Toggle Music">
+      <!-- Music On -->
+      <svg class="iconMusic musicOn" xmlns="http://www.w3.org/2000/svg" width="12" height="18" viewBox="0 0 12 18" fill="none">
+        <path d="M6 0V10.55C5.41 10.21 4.73 10 4 10C1.79 10 0 11.79 0 14C0 16.21 1.79 18 4 18C6.21 18 8 16.21 8 14V4H12V0H6Z" fill="currentColor"/>
+      </svg>
+      <!-- Music Off -->
+      <svg class="iconMusic musicOff" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <path d="M18.4 19.8L0 1.4L1.4 0L19.8 18.4L18.4 19.8ZM12.6 8.35L10.6 6.35V0.2H16.6V4.2H12.6V8.35ZM8.6 18.2C7.5 18.2 6.55833 17.8083 5.775 17.025C4.99167 16.2417 4.6 15.3 4.6 14.2C4.6 13.1 4.99167 12.1583 5.775 11.375C6.55833 10.5917 7.5 10.2 8.6 10.2C8.98333 10.2 9.33767 10.246 9.663 10.338C9.98833 10.43 10.3007 10.5673 10.6 10.75V9.2L12.6 11.2V14.2C12.6 15.3 12.2083 16.2417 11.425 17.025C10.6417 17.8083 9.7 18.2 8.6 18.2Z" fill="currentColor"/>
+      </svg>
+    </button>
+
+    <!-- Custom Cursor -->
     <div class="custom--cursor"></div>
     <div class="cursor--outline"></div>
 
+    <!-- Chapters -->
     <div id="fixed-japanese" class="japanese--content fixed"></div>
     <div id="fixed-chapter" class="text--chapter fixed"></div>
 
@@ -48,7 +65,7 @@
       <section id="chapter0" class="section section--chapter section--header">
         <div class="section--header__content">
           <h1 class="title title--big">Egg&nbsp;<img class="compass--h1" src="assets/images/compass.svg" alt="compass">&nbsp;Head</h1>
-          <p class="text--big">Laboratoire du Dr. Vegapunk</p>
+          <p class="text--big">« Les limites de l’imagination ? Juste un point de départ. »</p>
           <a class="btn--start" href="index.html">Retour à l'acceuil<svg class="compass--btn" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 54 54" fill="none"><path d="M32.913 32.913L10.8 43.2L21.087 21.087L43.2 10.8M27 0C23.4543 0 19.9433 0.698376 16.6675 2.05525C13.3918 3.41213 10.4153 5.40094 7.90812 7.90812C2.84463 12.9716 0 19.8392 0 27C0 34.1608 2.84463 41.0284 7.90812 46.0919C10.4153 48.5991 13.3918 50.5879 16.6675 51.9448C19.9433 53.3016 23.4543 54 27 54C34.1608 54 41.0284 51.1554 46.0919 46.0919C51.1554 41.0284 54 34.1608 54 27C54 23.4543 53.3016 19.9433 51.9448 16.6675C50.5879 13.3918 48.5991 10.4153 46.0919 7.90812C43.5847 5.40094 40.6082 3.41213 37.3325 2.05525C34.0567 0.698376 30.5457 0 27 0ZM27 24.03C26.2123 24.03 25.4569 24.3429 24.8999 24.8999C24.3429 25.4569 24.03 26.2123 24.03 27C24.03 27.7877 24.3429 28.5431 24.8999 29.1001C25.4569 29.6571 26.2123 29.97 27 29.97C27.7877 29.97 28.5431 29.6571 29.1001 29.1001C29.6571 28.5431 29.97 27.7877 29.97 27C29.97 26.2123 29.6571 25.4569 29.1001 24.8999C28.5431 24.3429 27.7877 24.03 27 24.03Z" fill="currentColor"/></svg></a>
         </div>
         <div class="japanese--content">

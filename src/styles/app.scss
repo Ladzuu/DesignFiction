@@ -15,6 +15,31 @@ body {
     cursor: none;
 }
 
+// Audio
+.musicBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--background-color);
+    border: var(--secondary-color) 2px solid;
+    border-radius: 50%;
+    color: var(--secondary-color);
+    cursor: none;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    z-index: 9999;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+}
+
+.iconMusic {
+    width: 15px;
+    height: 15px;
+    transition: all 0.3s ease;
+}
+
 // Cursor
 
 .custom--cursor {
@@ -41,8 +66,6 @@ body {
 }
 
 // Anchors
-
-
 
 #chapter1,
 #chapter2,
@@ -606,6 +629,10 @@ body {
 @media (min-width: 450px) {
     .menu--btn {
         right: 35px;
+    }
+
+    .musicBtn {
+        left: 30px;
     }
 
     .header {

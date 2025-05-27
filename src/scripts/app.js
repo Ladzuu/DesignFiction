@@ -39,6 +39,55 @@ function animate() {
 // Start Anim
 animate();
 
+// ------- AUDIO -------
+const music = document.querySelector(".musicBackground");
+const toggleBtn = document.querySelector(".musicBtn");
+const iconOn = document.querySelector(".musicOn");
+const iconOff = document.querySelector(".musicOff");
+
+let isPlaying = true;
+
+// Fonction pour mettre à jour les icônes
+function updateIcons() {
+  iconOn.style.display = isPlaying ? "inline" : "none";
+  iconOff.style.display = isPlaying ? "none" : "inline";
+}
+
+// Lecture forcée dès le chargement
+window.addEventListener("DOMContentLoaded", () => {
+  isPlaying = true;
+  updateIcons();
+
+  // Forcer le démarrage de la musique
+  music.currentTime = 0; // S'assure de recommencer au début
+  const playAttempt = music.play();
+
+  if (playAttempt !== undefined) {
+    playAttempt
+      .then(() => {
+        isPlaying = true;
+        updateIcons();
+      })
+      .catch((error) => {
+        console.warn("Lecture automatique bloquée :", error);
+        isPlaying = false;
+        updateIcons();
+      });
+  }
+});
+
+// Clic = toggle lecture/pause
+toggleBtn.addEventListener("click", () => {
+  if (isPlaying) {
+    music.pause();
+  } else {
+    music.play().catch(err => console.warn("Erreur de lecture :", err));
+  }
+  isPlaying = !isPlaying;
+  updateIcons();
+});
+
+
 // ------- NAVIGATION -------
 
 const menu = document.querySelector(".nav__mb");
