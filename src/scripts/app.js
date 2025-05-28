@@ -45,21 +45,22 @@ const toggleBtn = document.querySelector(".musicBtn");
 const iconOn = document.querySelector(".musicOn");
 const iconOff = document.querySelector(".musicOff");
 
+music.volume = 0.5;
 let isPlaying = true;
 
-// Fonction pour mettre à jour les icônes
+// Update Icons
 function updateIcons() {
   iconOn.style.display = isPlaying ? "inline" : "none";
   iconOff.style.display = isPlaying ? "none" : "inline";
 }
 
-// Lecture forcée dès le chargement
+// Start when page load
 window.addEventListener("DOMContentLoaded", () => {
   isPlaying = true;
   updateIcons();
 
-  // Forcer le démarrage de la musique
-  music.currentTime = 0; // S'assure de recommencer au début
+  // Music starts
+  music.currentTime = 0; // On refresh, restart
   const playAttempt = music.play();
 
   if (playAttempt !== undefined) {
@@ -76,7 +77,7 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-// Clic = toggle lecture/pause
+// Toggle On/Off
 toggleBtn.addEventListener("click", () => {
   if (isPlaying) {
     music.pause();

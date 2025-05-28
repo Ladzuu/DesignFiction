@@ -12,7 +12,6 @@ body {
     background: var(--background-color);
     color: var(--primary-color);
     margin: 0;
-    cursor: none;
 }
 
 // Audio
@@ -24,7 +23,7 @@ body {
     border: var(--secondary-color) 2px solid;
     border-radius: 50%;
     color: var(--secondary-color);
-    cursor: none;
+    cursor: pointer;
     width: 30px;
     height: 30px;
     padding: 0;
@@ -43,26 +42,11 @@ body {
 // Cursor
 
 .custom--cursor {
-    width: 15px;
-    height: 15px;
-    position: fixed;
-    pointer-events: none;
-    background-color: var(--secondary-color);
-    transform: translate(-50%, -50%);
-    border-radius: 50%;
-    z-index: 10000;
+    display: none;
 }
 
 .cursor--outline {
-    width: 40px;
-    height: 40px;
-    border: 1px solid var(--secondary-color);
-    border-radius: 50%;
-    position: fixed;
-    pointer-events: none;
-    transform: translate(-50%, -50%);
-    z-index: 9999;
-    transition: transform 0.1s ease;
+    display: none;
 }
 
 // Anchors
@@ -112,7 +96,7 @@ body {
     color: transparent;
     border: 0;
     z-index: 99;
-    cursor: none;
+    cursor: pointer;
 
     i {
         display: block;
@@ -210,7 +194,7 @@ body {
                 font-family: var(--title-section);
                 transition: all 0.3s ease;
                 opacity: 0;
-                cursor: none;
+                cursor: pointer;
 
                 .text--number {
                     font-size: var(--h3-size-mb);
@@ -291,7 +275,7 @@ body {
             text-decoration: none;
             border-radius: 5px;
             transition: all 0.3s ease;
-            cursor: none;
+            cursor: pointer;
             box-shadow: 0 0px 10px rgba(0, 0, 0, 0.3);
 
             .compass--btn {
@@ -538,7 +522,7 @@ body {
             text-decoration: none;
             border-radius: 5px;
             transition: all 0.3s ease;
-            cursor: none;
+            cursor: pointer;
             box-shadow: 0 0px 10px rgba(0, 0, 0, 0.3);
 
             .arrow--next {
@@ -578,7 +562,7 @@ body {
             text-decoration: none;
             border-radius: 5px;
             transition: all 0.3s ease;
-            cursor: none;
+            cursor: pointer;
             box-shadow: 0 0px 10px rgba(0, 0, 0, 0.3);
 
             .compass--btn {
@@ -839,7 +823,7 @@ body {
                 text-decoration: none;
                 border-radius: 5px;
                 transition: all 0.3s ease;
-                cursor: none;
+                cursor: pointer;
                 box-shadow: 0 0px 10px rgba(0, 0, 0, 0.3);
 
                 .arrow--next {
@@ -877,6 +861,50 @@ body {
 }
 
 @media (min-width: 1024px) {
+    body {
+        cursor: none;
+    }
+
+    .custom--cursor {
+        display: block;
+        width: 15px;
+        height: 15px;
+        position: fixed;
+        pointer-events: none;
+        background-color: var(--secondary-color);
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        z-index: 10000;
+    }
+
+    .cursor--outline {
+        display: block;
+        width: 40px;
+        height: 40px;
+        border: 1px solid var(--secondary-color);
+        border-radius: 50%;
+        position: fixed;
+        pointer-events: none;
+        transform: translate(-50%, -50%);
+        z-index: 9999;
+        transition: transform 0.1s ease;
+    }
+
+    .menu--btn {
+        cursor: none;
+    }
+
+    .nav {
+        .nav__mb {
+            .nav__list {
+                .nav__item {
+                    .nav__link {
+                        cursor: none;
+                    }
+                }
+            }
+        }
+    }
 
     .japanese--content.fixed {
         padding: 10px 5px 2px 5px;
@@ -913,6 +941,7 @@ body {
                 font-size: var(--text-dt);
                 padding: 16px 25px;
                 margin-top: 80px;
+                cursor: none;
 
                 .compass--btn {
                     width: 25px;
@@ -938,8 +967,13 @@ body {
                     }
                 }
 
+                .btn--next {
+                    cursor: none;
+                }
+
                 .btn--start {
                     margin-top: 0;
+                    cursor: none;
                 }
 
                 .figure--large {
@@ -966,6 +1000,10 @@ body {
                         font-size: var(--text-small-dt);
                     }
                 }
+            }
+
+            .btn--tech {
+                cursor: none;
             }
 
             .section--chapter__content {
