@@ -704,17 +704,6 @@ body {
 
 @media (min-width: 768px) {
 
-    .bgVideo {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        object-fit: cover;
-        z-index: -1;
-        pointer-events: none;
-    }
-
     .nav {
         border-bottom: none;
         background-color: transparent;
@@ -873,6 +862,10 @@ body {
 
 @media (min-width: 1024px) {
     body {
+        cursor: none;
+    }
+
+    .musicBtn {
         cursor: none;
     }
 

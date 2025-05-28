@@ -5,34 +5,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-// ------- BACKGROUND VIDEO -------
-
-const video = document.querySelector(".bgVideo");
-const videoDuration = 14.05;
-
-// Autoplay Off
-video.addEventListener("loadedmetadata", () => {
-  video.pause();
-  video.currentTime = 0;
-});
-
-// Video Paused
-video.addEventListener("play", () => {
-  video.pause();
-});
-
-// Synchro scroll with video time
-window.addEventListener("scroll", () => {
-  const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
-  const scrollTop = window.scrollY;
-
-  const scrollPercent = scrollTop / scrollableHeight;
-  const time = scrollPercent * videoDuration;
-
-  // Block time over video duration
-  video.currentTime = Math.min(Math.max(time, 0), videoDuration);
-});
-
 // ------- CUSTOM CURSOR -------
 
 const cursor = document.querySelector('.custom--cursor');      // Cursor
