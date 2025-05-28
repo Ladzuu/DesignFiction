@@ -5,6 +5,34 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
+// ------- BACKGROUND VIDEO -------
+
+const video = document.querySelector(".bgVideo");
+const videoDuration = 14.05;
+
+// Autoplay Off
+video.addEventListener("loadedmetadata", () => {
+  video.pause();
+  video.currentTime = 0;
+});
+
+// Video Paused
+video.addEventListener("play", () => {
+  video.pause();
+});
+
+// Synchro scroll with video time
+window.addEventListener("scroll", () => {
+  const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const scrollTop = window.scrollY;
+
+  const scrollPercent = scrollTop / scrollableHeight;
+  const time = scrollPercent * videoDuration;
+
+  // Block time over video duration
+  video.currentTime = Math.min(Math.max(time, 0), videoDuration);
+});
+
 // ------- CUSTOM CURSOR -------
 
 const cursor = document.querySelector('.custom--cursor');      // Cursor
@@ -296,13 +324,13 @@ updateFixedContent();
 
 // --- Anim Chapter Content ---
 
-const animatedElements = gsap.utils.toArray([
+const homeElements = gsap.utils.toArray([
   '.section--chapter__frame',
   '.section--chapter__content',
   'figure'
 ]);
 
-animatedElements.forEach((el) => {
+homeElements.forEach((el) => {
   gsap.from(el, {
     opacity: 0,
     y: -60,
@@ -318,3 +346,27 @@ animatedElements.forEach((el) => {
   });
 });
 
+// ------- TECH PAGE -------
+
+// --- Anim Chapter Content ---
+
+const techElements = gsap.utils.toArray([
+  '.section--tech__intro',
+  '.section--tech__choices'
+]);
+
+techElements.forEach((el) => {
+  gsap.from(el, {
+    opacity: 0,
+    y: -60,
+    duration: 1.2,
+    stagger: 0.2,
+    ease: 'power2.out',
+    scrollTrigger: {
+      trigger: el,
+      start: 'top 80%',
+      end: '80% top',
+      toggleActions: 'play reverse play reverse',
+    }
+  });
+});
