@@ -342,3 +342,68 @@ techElements.forEach((el) => {
     }
   });
 });
+
+// --- Anim Labo Vegapunk ---
+
+gsap.utils.toArray('.tech__text').forEach((el) => {
+  gsap.from(el, {
+    opacity: 0,
+    y: 60,
+    duration: 1,
+    ease: 'power2.out',
+    scrollTrigger: {
+      trigger: el,
+      start: 'top 80%',
+      end: '80% top',
+      toggleActions: 'play reverse play reverse',
+    }
+  });
+});
+
+
+gsap.utils.toArray('.tech--return').forEach((el) => {
+  gsap.from(el, {
+    opacity: 0,
+    y: 40,
+    duration: 1,
+    ease: 'power2.out',
+    scrollTrigger: {
+      trigger: el,
+      start: 'top 85%',
+      end: '80% top',
+      toggleActions: 'play reverse play reverse',
+    }
+  });
+});
+
+gsap.utils.toArray('.section--choices__content .card--tech').forEach((el, i) => {
+  gsap.from(el, {
+    opacity: 0,
+    y: 40,
+    duration: 1,
+    delay: i * 0.15,
+    ease: 'power2.out',
+    scrollTrigger: {
+      trigger: el,
+      start: 'top 85%',
+      end: '80% top',
+      toggleActions: 'play reverse play reverse',
+    }
+  });
+});
+
+gsap.utils.toArray('.section--choices > *').forEach((el, i) => {
+  gsap.from(el, {
+    opacity: 0,
+    y: 60,
+    duration: 1,
+    delay: i * 0.15,
+    ease: 'power2.out',
+    scrollTrigger: {
+      trigger: el,
+      start: 'top 85%',
+      end: '80% top',
+      toggleActions: 'play reverse play reverse',
+    }
+  });
+});
