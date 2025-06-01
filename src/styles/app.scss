@@ -14,13 +14,48 @@ body {
     margin: 0;
 }
 
+// Loading Page
+
+// ...existing code...
+
+.loading--page {
+    opacity: 0;
+    position: fixed;
+    z-index: 99999;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    background: var(--secondary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .loading--page__content {
+        max-width: 350px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+
+        .spoiler {
+            font-size: var(--text-big-mb);
+            font-family: var(--title-section);
+            color: var(--background-color);
+            font-weight: var(--bold-weight);
+            line-height: var(--title-line-height);
+            margin: 0 0 40px 0;
+        }
+    }
+}
+
 // Audio
 .musicBtn {
     display: flex;
     justify-content: center;
     align-items: center;
     background: var(--background-color);
-    border: var(--secondary-color) 2px solid;
+    border: 2px solid var(--secondary-color);
     border-radius: 50%;
     color: var(--secondary-color);
     cursor: pointer;
@@ -665,6 +700,7 @@ body {
             text-decoration: none;
             border-radius: 5px;
             cursor: pointer;
+            transition: all 0.3s ease;
             box-shadow: 0 0px 10px rgba(0, 0, 0, 0.3);
 
             .compass--btn {
@@ -918,6 +954,18 @@ body {
 }
 
 @media (min-width: 768px) {
+
+    .loading--page {
+
+        .loading--page__content {
+            max-width: 500px;
+
+            .spoiler {
+                font-size: var(--text-big-dt);
+                margin: 0 0 80px 0;
+            }
+        }
+    }
 
     .nav {
         border-bottom: none;
@@ -1446,6 +1494,15 @@ body {
     .gridDt-start4 {
         grid-column: 4 / 7;
     }
+
+    .main__tech {
+        .section--tech {
+            .section--tech__content {
+                flex-direction: row;
+                gap: 40px;
+            }
+        }
+    }
 }
 
 @media (min-width : 1400px) {
@@ -1458,8 +1515,7 @@ body {
             }
 
             .section--tech__content {
-                flex-direction: row;
-                gap: 40px;
+                gap: 80px;
             }
         }
     }

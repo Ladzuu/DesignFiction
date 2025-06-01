@@ -5,6 +5,53 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
+// ------- LOADING PAGE -------
+
+window.addEventListener("DOMContentLoaded", () => {
+  const navEntries = performance.getEntriesByType("navigation");
+  const isReload = navEntries.length && navEntries[0].type === "reload";
+  const isNavigate = navEntries.length && navEntries[0].type === "navigate";
+  if (isReload || isNavigate) {
+    sessionStorage.removeItem("loadingShown");
+  }
+
+  window.scrollTo(0, 0);
+
+  const spoiler = document.querySelector(".loading--page");
+  if (spoiler && !sessionStorage.getItem("loadingShown")) {
+    document.body.style.overflow = "hidden";
+    gsap.set(spoiler, {
+      opacity: 1,
+      pointerEvents: "all"
+    });
+    gsap.set(".loading--page__content", {
+      y: -80,
+      opacity: 0
+    });
+    gsap.to(".loading--page__content", {
+      y: 0,
+      opacity: 1,
+      duration: 0.6,
+      ease: "power2.out"
+    });
+    setTimeout(() => {
+      gsap.to(spoiler, {
+        opacity: 0,
+        duration: 0.7,
+        ease: "power2.inOut",
+        onComplete: () => {
+          spoiler.style.display = "none";
+          document.body.style.overflow = "";
+          sessionStorage.setItem("loadingShown", "true");
+        }
+      });
+    }, 3000);
+  } else if (spoiler) {
+    spoiler.style.display = "none";
+    document.body.style.overflow = "";
+  }
+});
+
 // ------- CUSTOM CURSOR -------
 
 const cursor = document.querySelector('.custom--cursor');      // Cursor
@@ -324,20 +371,19 @@ homeElements.forEach((el) => {
 
 const techElements = gsap.utils.toArray([
   '.section--tech__intro',
-  '.section--tech__choices'
+  '.section--tech__content'
 ]);
 
 techElements.forEach((el) => {
   gsap.from(el, {
     opacity: 0,
-    y: -60,
+    y: -40,
     duration: 1.2,
     stagger: 0.2,
     ease: 'power2.out',
     scrollTrigger: {
       trigger: el,
       start: 'top 80%',
-      end: '80% top',
       toggleActions: 'play reverse play reverse',
     }
   });
@@ -348,7 +394,7 @@ techElements.forEach((el) => {
 gsap.utils.toArray('.tech__text').forEach((el) => {
   gsap.from(el, {
     opacity: 0,
-    y: 60,
+    y: -60,
     duration: 1,
     ease: 'power2.out',
     scrollTrigger: {
@@ -364,7 +410,7 @@ gsap.utils.toArray('.tech__text').forEach((el) => {
 gsap.utils.toArray('.tech--return').forEach((el) => {
   gsap.from(el, {
     opacity: 0,
-    y: 40,
+    y: -40,
     duration: 1,
     ease: 'power2.out',
     scrollTrigger: {
@@ -379,7 +425,7 @@ gsap.utils.toArray('.tech--return').forEach((el) => {
 gsap.utils.toArray('.section--choices__content .card--tech').forEach((el, i) => {
   gsap.from(el, {
     opacity: 0,
-    y: 40,
+    y: -40,
     duration: 1,
     delay: i * 0.15,
     ease: 'power2.out',
@@ -395,7 +441,7 @@ gsap.utils.toArray('.section--choices__content .card--tech').forEach((el, i) => 
 gsap.utils.toArray('.section--choices > *').forEach((el, i) => {
   gsap.from(el, {
     opacity: 0,
-    y: 60,
+    y: -60,
     duration: 1,
     delay: i * 0.15,
     ease: 'power2.out',
