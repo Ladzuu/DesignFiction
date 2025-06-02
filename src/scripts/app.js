@@ -52,6 +52,23 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+// --- Anim Compass Header ---
+
+const compassLoading = document.querySelector('.loading--icon');
+
+gsap.fromTo (compassLoading, 
+  {
+    rotate: -20,
+  },
+  {
+    rotate: 20,
+    duration: 1,
+    repeat: -1,
+    yoyo: true,
+    ease: "power1.inOut",
+  }
+);
+
 // ------- CUSTOM CURSOR -------
 
 const cursor = document.querySelector('.custom--cursor');      // Cursor
