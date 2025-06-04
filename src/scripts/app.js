@@ -7,6 +7,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 // ------- LOADING PAGE -------
 
+// Pour cette partie, j'ai cherché une solution sur internet mais cela ne semble pas fonctionner comme je le voudrais. J'ai ajouté les animations avec GSAP.
 window.addEventListener("DOMContentLoaded", () => {
   const navEntries = performance.getEntriesByType("navigation");
   const isReload = navEntries.length && navEntries[0].type === "reload";
@@ -71,6 +72,7 @@ gsap.fromTo (compassLoading,
 
 // ------- CUSTOM CURSOR -------
 
+// Le curseur personnalisé a été créé à l'aide de ChatGPT.
 const cursor = document.querySelector('.custom--cursor');      // Cursor
 const outline = document.querySelector('.cursor--outline');    // Border Follow
 
@@ -274,6 +276,8 @@ gsap.fromTo (compass,
 );
 
 // --- Anim Chapters Tablet/Desktop ---
+
+// Le changement de chapitre a été créé à l'aide de ChatGPT, j'ai ajouté les animations avec GSAP et j'ai créé la condition de taille d'écran.
 const fixedJapanese = document.getElementById('fixed-japanese'); // Fixed Japanese Content
 const fixedChapter = document.getElementById('fixed-chapter'); // Fixed Chapter Content
 const sections = Array.from(document.querySelectorAll('.section--chapter')); // All sections with chapters
